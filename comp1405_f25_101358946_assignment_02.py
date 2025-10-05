@@ -38,7 +38,6 @@ def main():
     # Right edge
     base.draw_line((right, top + cut), (right, bottom - cut), colour, w)
 
-
     # --- Corner accents (little ticks) ---
 
     # Top-left---
@@ -90,13 +89,42 @@ def main():
     if res == 'yes' or 'y':
         print("In The Hunger Trail, you take on the role of a traveling vendor navigating a difficult trade route during a food shortage. Along the way, you'll gather, prepare, and manage supplies to keep your caravan alive. Every decision — from how you ration ingredients to how you prepare meals — affects your success. The journey will test not just your survival instincts, but your understanding of proper food preparation and planning.\n")
 
-    # --- Starting location ---
+    # --- Starting location & sub routes ---
     print('----- STARTING LOCATION -----')
     print('First you must choose your starting location.\n1. Harveston Village\n2. Port Umber\n3. Stoneveil Crossing\n4. Learn more...')
     location = input(' ').strip()
+
     if location == '4' or '4.':
         print('1. Harveston Village: fertile farmlands known for grain and produce.\n2. Port Umber: a coastal trade hub famous for spices and salted meat.\n3. Stoneveil Crossing: a mountain pass settlement that trades in dried goods and cooking oil.')
         location = input(' ').strip()
+    
+    # Harveston Village branching control structure
+    if location == '1' or '1.':
+        print('From Harveston Village, you can venture north to Millford Fields or travel east to Oakbarrel Market.\n1. Millford Fields\n2. Oakbarrel Market\n3. Learn more...')
+        location = input(' ').strip()
+        if location == '3' or '3.':
+            print('1. Millford Fields: open farmland where you can stock up on grain and flour. Prices are lower, but weather exposure increases travel time.\n2. Oakbarrel Market: a rural trading post known for dairy and fresh produce. Offers better quality goods, but stock is limited.')
+            location = input(' ').strip()
+            if location == '1' or '1.':
+                location = 'Harveston Village: Millford Fields'
+            else:
+                location = 'Harveston Village: Oakbarrel Market'
+    
+    # Port Umber branching control structure
+    if location == '2' or '2.':
+        print('From Port Umber, you can set course for Saltmar Wharf or head inland toward the Old Bazaar District.\n1. Saltmar Wharf\n2. Old Bazaar District\n3. Learn more...')
+        location = input(' ').strip()
+        if location == '3' or '3.':
+            print('1. Saltmar Wharf: docks lined with fishermen and spice vendors. Great deals on meat and salt, but storage risk is high due to humidity.\n2. Old Bazaar District: a crowded marketplace with exotic ingredients and cooking oils. Prices fluctuate daily, but rare items can appear.')
+            location = input(' ').strip()
+            if location == '1' or '1.':
+                location = 'Port Umber: Saltmar Wharf'
+            else:
+                location = 'Port Umber: Old Bazaar District'
+
+    # Stoneveil Crossing
+    if location == '3' or '3.':
+        location = 'Stoneveil Crossing'
 
     # --- Departure Date ---
     print('\n----- DEPARTURE DATE -----')
@@ -105,9 +133,40 @@ def main():
     if date == '6' or '6.':
         print('1. March: early spring; mild weather, but few fresh supplies available.\n2. April: balanced season, average food spoilage rate.\n3. June: summer heat increases water loss and food spoilage.\n4. September: harvest season; abundant crops, but colder nights.\n5. November: early winter; limited produce but safer meat storage.')
         date = input(' ').strip()
+    if date == '1' or '1.':
+        date = 'March'
+    elif date == '2' or '2.':
+        date = 'April'
+    elif date == '3' or '3.':
+        date = 'June'
+    elif date == '4' or '4.':
+        date = 'September'
+    else:
+        date = 'November'
 
+    # --- Character Selection ---
+    print('\n----- CHARACTER CLASSES -----')
+    print('Please choose your character class:\n1. Chef: expert in food preservation and efficient ingredient use.\n2. Merchant: skilled trader, negotiates better prices and inventory bonuses.\n3. Forager: gathers wild foods and finds water more easily on the trail.')
+    character = input(' ').strip()
+    if character == '1' or '1.':
+        character = 'Chef'
+    elif character == '2' or '2.':
+        character = 'Merchant'
+    else:
+        character = 'Forager'
 
-
+    # --- Buff/Debuff Stat ---
+    if character == 'Chef' or date == 'November':
+        stat = 'Buff: Food spoilage reduced by 30%'
+        stat_description = 'A skilled Chef knows how to cure, salt, and preserve ingredients, while the cold air of late November naturally slows decay. Either way, your supplies stay fresher for longer on the trail.'
+    elif character == 'Merchant' and date == 'March':
+        stat = 'Buff: +15% starting funds'
+        stat_description = 'Early spring is the start of the trading season — prices are low, and Merchants profit from offseason bulk deals.'
+    elif character == 'Forager' and date == 'September':
+        stat = 'Buff: +20% materials gathered'
+        stat_description = "Late-harvest season means wild fruits, mushrooms, and roots are plentiful, making it ideal for a Forager's skillset."
+    if stat:
+        print(f'{stat_description}\n    • {stat}')
 
     # --- Party names ---
     leader = input('What is the first name of the party leader? ')
