@@ -86,71 +86,71 @@ def main():
 
     # --- Narrative/Learn more ---
     res = input('Would you like to learn more (y/n)? ').lower()
-    if res == 'yes' or 'y':
-        print("In The Hunger Trail, you take on the role of a traveling vendor navigating a difficult trade route during a food shortage. Along the way, you'll gather, prepare, and manage supplies to keep your caravan alive. Every decision — from how you ration ingredients to how you prepare meals — affects your success. The journey will test not just your survival instincts, but your understanding of proper food preparation and planning.\n")
+    if res == 'yes' or res == 'y':
+        print("\nIn The Hunger Trail, you take on the role of a traveling vendor navigating a difficult trade route during a food shortage. Along the way, you'll gather, prepare, and manage supplies to keep your caravan alive. Every decision — from how you ration ingredients to how you prepare meals — affects your success. The journey will test not just your survival instincts, but your understanding of proper food preparation and planning.\n")
 
     # --- Starting location & sub routes ---
-    print('----- STARTING LOCATION -----')
-    print('First you must choose your starting location.\n1. Harveston Village\n2. Port Umber\n3. Stoneveil Crossing\n4. Learn more...')
-    location = input(' ').strip()
+    print('\n----- STARTING LOCATION -----')
+    print('1. Harveston Village\n2. Port Umber\n3. Stoneveil Crossing\n4. Learn more...\n')
+    location = input('Where would you like to start? ').strip()
 
-    if location == '4' or '4.':
-        print('1. Harveston Village: fertile farmlands known for grain and produce.\n2. Port Umber: a coastal trade hub famous for spices and salted meat.\n3. Stoneveil Crossing: a mountain pass settlement that trades in dried goods and cooking oil.')
-        location = input(' ').strip()
+    if location == '4':
+        print('\n1. Harveston Village: fertile farmlands known for grain and produce.\n2. Port Umber: a coastal trade hub famous for spices and salted meat.\n3. Stoneveil Crossing: a mountain pass settlement that trades in dried goods and cooking oil.\n')
+        location = input('Where will it be traveller? ').strip()
     
     # Harveston Village branching control structure
-    if location == '1' or '1.':
-        print('From Harveston Village, you can venture north to Millford Fields or travel east to Oakbarrel Market.\n1. Millford Fields\n2. Oakbarrel Market\n3. Learn more...')
-        location = input(' ').strip()
-        if location == '3' or '3.':
-            print('1. Millford Fields: open farmland where you can stock up on grain and flour. Prices are lower, but weather exposure increases travel time.\n2. Oakbarrel Market: a rural trading post known for dairy and fresh produce. Offers better quality goods, but stock is limited.')
-            location = input(' ').strip()
-            if location == '1' or '1.':
+    if location == '1':
+        print('\n1. Millford Fields\n2. Oakbarrel Market\n3. Learn more...\n')
+        location = input('From Harveston, you can venture north to Millford or east to Oakbarrel? ').strip()
+        if location == '3':
+            print('1. Millford Fields: open farmland where you can stock up on grain and flour. Prices are lower, but weather exposure increases travel time.\n2. Oakbarrel Market: a rural trading post known for dairy and fresh produce. Offers better quality goods, but stock is limited.\n')
+            location = input('Where will it be traveller? ').strip()
+            if location == '1':
                 location = 'Harveston Village: Millford Fields'
             else:
                 location = 'Harveston Village: Oakbarrel Market'
     
     # Port Umber branching control structure
-    if location == '2' or '2.':
-        print('From Port Umber, you can set course for Saltmar Wharf or head inland toward the Old Bazaar District.\n1. Saltmar Wharf\n2. Old Bazaar District\n3. Learn more...')
-        location = input(' ').strip()
-        if location == '3' or '3.':
-            print('1. Saltmar Wharf: docks lined with fishermen and spice vendors. Great deals on meat and salt, but storage risk is high due to humidity.\n2. Old Bazaar District: a crowded marketplace with exotic ingredients and cooking oils. Prices fluctuate daily, but rare items can appear.')
-            location = input(' ').strip()
-            if location == '1' or '1.':
+    elif location == '2':
+        print('\n1. Saltmar Wharf\n2. Old Bazaar District\n3. Learn more...\n')
+        location = input('Would you like to set course for Saltmar or inland toward the Old Bazzar District? ').strip()
+        if location == '3':
+            print('1. Saltmar Wharf: docks lined with fishermen and spice vendors. Great deals on meat and salt, but storage risk is high due to humidity.\n2. Old Bazaar District: a crowded marketplace with exotic ingredients and cooking oils. Prices fluctuate daily, but rare items can appear.\n')
+            location = input('Where will it be traveller? ').strip()
+            if location == '1':
                 location = 'Port Umber: Saltmar Wharf'
             else:
                 location = 'Port Umber: Old Bazaar District'
 
     # Stoneveil Crossing
-    if location == '3' or '3.':
+    else:
         location = 'Stoneveil Crossing'
 
     # --- Departure Date ---
     print('\n----- DEPARTURE DATE -----')
-    print('Please select a departure date.\n1. March\n2. April\n3. June\n4. September\n5. November\n6. Learn more...')
-    date = input(' ').strip()
-    if date == '6' or '6.':
-        print('1. March: early spring; mild weather, but few fresh supplies available.\n2. April: balanced season, average food spoilage rate.\n3. June: summer heat increases water loss and food spoilage.\n4. September: harvest season; abundant crops, but colder nights.\n5. November: early winter; limited produce but safer meat storage.')
-        date = input(' ').strip()
-    if date == '1' or '1.':
+    print('1. March\n2. April\n3. June\n4. September\n5. November\n6. Learn more...\n')
+    date = input('Which date would you like to hit the trail? ').strip()
+    if date == '6':
+        print('\n1. March: early spring; mild weather, but few fresh supplies available.\n2. April: balanced season, average food spoilage rate.\n3. June: summer heat increases water loss and food spoilage.\n4. September: harvest season; abundant crops, but colder nights.\n5. November: early winter; limited produce but safer meat storage.\n')
+        date = input('Which date would you like? ').strip()
+    if date == '1':
         date = 'March'
-    elif date == '2' or '2.':
+    elif date == '2':
         date = 'April'
-    elif date == '3' or '3.':
+    elif date == '3':
         date = 'June'
-    elif date == '4' or '4.':
+    elif date == '4':
         date = 'September'
     else:
         date = 'November'
 
     # --- Character Selection ---
     print('\n----- CHARACTER CLASSES -----')
-    print('Please choose your character class:\n1. Chef: expert in food preservation and efficient ingredient use.\n2. Merchant: skilled trader, negotiates better prices and inventory bonuses.\n3. Forager: gathers wild foods and finds water more easily on the trail.')
-    character = input(' ').strip()
-    if character == '1' or '1.':
+    print('1. Chef: expert in food preservation and efficient ingredient use.\n2. Merchant: skilled trader, negotiates better prices and inventory bonuses.\n3. Forager: gathers wild foods and finds water more easily on the trail.\n')
+    character = input('Which character class would you like? ').strip()
+    if character == '1':
         character = 'Chef'
-    elif character == '2' or '2.':
+    elif character == '2':
         character = 'Merchant'
     else:
         character = 'Forager'
@@ -158,15 +158,18 @@ def main():
     # --- Buff/Debuff Stat ---
     if character == 'Chef' or date == 'November':
         stat = 'Buff: Food spoilage reduced by 30%'
-        stat_description = 'A skilled Chef knows how to cure, salt, and preserve ingredients, while the cold air of late November naturally slows decay. Either way, your supplies stay fresher for longer on the trail.'
+        stat_description = 'A skilled Chef knows how to cure, salt, and preserve ingredients, while the cold air of late November naturally slows decay. Either way, your supplies stay fresher for longer on the trail.\n'
     elif character == 'Merchant' and date == 'March':
         stat = 'Buff: +15% starting funds'
-        stat_description = 'Early spring is the start of the trading season — prices are low, and Merchants profit from offseason bulk deals.'
+        stat_description = 'Early spring is the start of the trading season — prices are low, and Merchants profit from offseason bulk deals.\n'
     elif character == 'Forager' and date == 'September':
         stat = 'Buff: +20% materials gathered'
-        stat_description = "Late-harvest season means wild fruits, mushrooms, and roots are plentiful, making it ideal for a Forager's skillset."
+        stat_description = "Late-harvest season means wild fruits, mushrooms, and roots are plentiful, making it ideal for a Forager's skillset.\n"
+    elif character == 'Merchant' and date == 'June':
+        stat = 'Debuff: Water costs +25%'
+        stat_description = "Hot summer routes make water scarce and expensive, cutting into a Merchant's profit margins.\n"
     if stat:
-        print(f'{stat_description}\n    • {stat}')
+        print(f'\n{stat_description}\n    • {stat}\n')
 
     # --- Party names ---
     leader = input('What is the first name of the party leader? ')
@@ -176,66 +179,65 @@ def main():
     member3 = input('  3. ')
     member4 = input('  4. ')
     member5 = input('  5. ')
-    print(' ')
 
     # --- Arithmetic pipeline for supplies ---
     total_currency = 101358946  # starting money = student number
     running_total = 0
-    print(f"Before leaving you should buy equipment and supplies. You have ${total_currency:.2f} in cash, but you don't have to spend it all now.")
-    print(' ')
+    print(f"\nBefore leaving you should buy equipment and supplies. You have ${total_currency:.2f} in cash, but you don't have to spend it all now.\n")
 
     # Flour
     flour_cost = 3.00
-    print(f'I charge ${flour_cost:.2f} for a sack of Flour. I recommend you buy at least 10 sacks so you can bake enough bread.')
-    print(' ')
+    print(f'I charge ${flour_cost:.2f} for a sack of Flour. I recommend you buy at least 10 sacks so you can bake enough bread.\n')
     flour_qty = int(input('How many sacks of Flour do you want to buy? '))
-    print(' ')
-    running_total += flour_cost * flour_qty
-    print(f'Your bill so far is: ${running_total:.2f}\n')
+    if flour_cost * flour_qty <= total_currency:
+        running_total += flour_cost * flour_qty
+        print(f'\nYour bill so far is: ${running_total:.2f}\n')
+    else:
+        print('\nInsufficient funds.\n')
 
     # Meat
     meat_cost = 8.00
-    print(f'I charge ${meat_cost:.2f} for a portion of Meat. I recommend you buy at least 5 portions for protein.')
-    print(' ')
+    print(f'I charge ${meat_cost:.2f} for a portion of Meat. I recommend you buy at least 5 portions for protein.\n')
     meat_qty = int(input('How many portions of Meat do you want to buy? '))
-    print(' ')
-    running_total += meat_cost * meat_qty
-    print(f'Your bill so far is: ${running_total:.2f}\n')
+    if meat_cost * meat_qty <= total_currency:
+        running_total += meat_cost * meat_qty
+        print(f'\nYour bill so far is: ${running_total:.2f}\n')
+    else:
+        print('\nInsufficient funds.\n')
 
     # Vegetables
     veg_cost = 4.00
-    print(f'I charge ${veg_cost:.2f} for a bundle of Vegetables. I recommend you buy at least 8 bundles for a balanced diet.')
-    print(' ')
+    print(f'I charge ${veg_cost:.2f} for a bundle of Vegetables. I recommend you buy at least 8 bundles for a balanced diet.\n')
     veg_qty = int(input('How many bundles of Vegetables do you want to buy? '))
-    print(' ')
-    running_total += veg_cost * veg_qty
-    print(f'Your bill so far is: ${running_total:.2f}\n')
+    if veg_cost * veg_qty <= total_currency:
+        running_total += veg_cost * veg_qty
+        print(f'\nYour bill so far is: ${running_total:.2f}\n')
+    else:
+        print('\nInsufficient funds.\n')
 
     # Cooking Oil
     oil_cost = 5.00
-    print(f'I charge ${oil_cost:.2f} for a jar of Cooking Oil. I recommend you buy at least 3 jars for meal preparation.')
-    print(' ')
+    print(f'I charge ${oil_cost:.2f} for a jar of Cooking Oil. I recommend you buy at least 3 jars for meal preparation.\n')
     oil_qty = int(input('How many jars of Cooking Oil do you want to buy? '))
-    print(' ')
-    running_total += oil_cost * oil_qty
-    print(f'Your bill so far is: ${running_total:.2f}\n')
+    if oil_cost * oil_qty <= total_currency:
+        running_total += oil_cost * oil_qty
+        print(f'\nYour bill so far is: ${running_total:.2f}\n')
+    else:
+        print('\nInsufficient funds.\n')
 
     # Water Barrels
     water_cost = 2.00
-    print(f'I charge ${water_cost:.2f} for a Water Barrel. I recommend you buy at least 10 barrels to keep your party hydrated.')
-    print(' ')
+    print(f'I charge ${water_cost:.2f} for a Water Barrel. I recommend you buy at least 10 barrels to keep your party hydrated.\n')
     water_qty = int(input('How many Water Barrels do you want to buy? '))
-    print(' ')
-    running_total += water_cost * water_qty
-    print(f'Your bill so far is: ${running_total:.2f}\n')
-    print(' ')
+    if water_cost * water_qty <= total_currency:
+        running_total += water_cost * water_qty
+        print(f'\nYour bill so far is: ${running_total:.2f}\n')
+    else:
+        print('\nInsufficient funds.\n')
 
     # Total cost
     print(f'Your total bill is: ${running_total:.2f}\n')
-    print(' ')
-    print(f'You have ${total_currency - running_total:.2f} left to spend.\n')
-    print(' ')
-    print("Let's get started!")
-    print(' ')
+    print(f'\nYou have ${total_currency - running_total:.2f} left to spend.\n')
+    print("\nLet's get started!\n")
 
 main()
